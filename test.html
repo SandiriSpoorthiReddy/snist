@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Specialties</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .specialties {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* Six buttons in a row */
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .specialty-button {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90px; /* Reduced size of buttons */
+            height: 90px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            font-size: 16px; /* Smaller text */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .specialty-button:hover {
+            background-color: #0056b3;
+        }
+
+        .specialty-button:active {
+            background-color: #003f7f;
+        }
+
+        .specialty-button.hidden {
+            display: none;
+        }
+
+        .search-box {
+            margin-top: 20px;
+        }
+
+        .search-box input {
+            padding: 12px;
+            width: 300px; /* Increased size of search bar */
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="specialties">
+        <div class="specialty-button" data-name="Cardiology">
+            ❤️ Cardiology
+        </div>
+        <div class="specialty-button" data-name="Neurology">
+            🧠 Neurology
+        </div>
+        <div class="specialty-button" data-name="Orthopedics">
+            🦵 Orthopedics
+        </div>
+        <div class="specialty-button" data-name="Pediatrics">
+            👶 Pediatrics
+        </div>
+        <div class="specialty-button" data-name="Dermatology">
+            🧴 Dermatology
+        </div>
+        <div class="specialty-button" data-name="Gynecology">
+            👩‍⚕️ Gynecology
+        </div>
+        <div class="specialty-button" data-name="Psychiatry">
+            🧑‍⚕️ Psychiatry
+        </div>
+        <div class="specialty-button" data-name="Dentistry">
+            🦷 Dentistry
+        </div>
+        <div class="specialty-button" data-name="Ophthalmology">
+            👁️ Ophthalmology
+        </div>
+        <div class="specialty-button" data-name="General Surgery">
+            🏥 General Surgery
+        </div>
+        <div class="specialty-button" data-name="Gastroenterology">
+            🍽️ Gastroenterology
+        </div>
+        <div class="specialty-button" data-name="Endocrinology">
+            🦋 Endocrinology
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search specialty..." oninput="filterSpecialties()">
+    </div>
+</div>
+
+<script>
+    function filterSpecialties() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const buttons = document.querySelectorAll('.specialty-button');
+        
+        buttons.forEach(button => {
+            const name = button.getAttribute('data-name').toLowerCase();
+            if (name.includes(searchInput)) {
+                button.classList.remove('hidden');
+            } else {
+                button.classList.add('hidden');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
